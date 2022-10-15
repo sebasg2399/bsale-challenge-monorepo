@@ -53,3 +53,6 @@
   color: white;
   background: #ffcd9b;
 }
+.search__button{
+  cursor: pointer;
+}

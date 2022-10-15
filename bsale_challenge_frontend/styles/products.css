@@ -89,3 +89,10 @@
   border-bottom-left-radius: 1rem;
   font-weight: 600;
 }
+
+.product-card__button--oncart{
+  background: rgb(255, 51, 51);
+}
+.product-card__button--oncart:hover{
+  background: rgb(212, 43, 43);
+}

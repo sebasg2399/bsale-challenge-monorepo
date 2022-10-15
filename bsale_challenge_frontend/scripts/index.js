@@ -1,8 +1,11 @@
 const htmlProducts = document.getElementById("products");
 const htmlCategories = document.getElementById("categories");
+
 const url = new URL("http://localhost:5000");
 let cache = {};
+
 let product_quantity = document.getElementById("product_quantity");
+
 product_quantity.innerText = 0;
 const ProductCard = (product) => {
   const dicounted_price =
@@ -28,16 +31,33 @@ const ProductCard = (product) => {
           : `<p class="product-card__price">$/.${product.price}</p>`
       }
       </div>
-      <button class="product-card__button">Agregar</button>
+      ${
+        product.in_cart
+          ? `<button class="product-card__button product-card__button--oncart" onclick="removeFromCart(${product.id})">Quitar</button>`
+          : `<button class="product-card__button" onclick="addToCart(${product.id})">Agregar</button>`
+      }
     </div>
   `;
 };
 
+let cart = [];
 let global_products = [];
 let order_products = [];
+
+const checkInCart = (product) => {
+  return cart.find((prod) => product.id === prod.id);
+};
+
 const renderProducts = (products) => {
   product_quantity.innerText = products.length;
   htmlProducts.innerHTML = "";
+  products = products.map((prod) => {
+    if (checkInCart(prod)) {
+      return { ...prod, in_cart: true };
+    } else {
+      return { ...prod, in_cart: false };
+    }
+  });
   global_products = products;
   order_products = products;
   products.forEach((product) => {
@@ -74,6 +94,7 @@ const getCategories = () => {
     });
   });
 };
+
 getCategories();
 getAllProducts();
 
@@ -112,6 +133,7 @@ const renderSearch = (products) => {
 };
 
 let active_state = false;
+let search_products = [];
 
 const handleSearch = (e) => {
   const query = e.currentTarget.value;
@@ -132,6 +154,7 @@ const handleSearch = (e) => {
       try {
         const { products, message } = await res.json();
         if (products.length > 0) {
+          search_products = products;
           renderSearch(products);
         } else {
           htmlSearchList.innerHTML = `<li class="search__item">No se encontraron productos</li>`;
@@ -169,4 +192,22 @@ const OrderProducts = (by) => {
   };
   global_products.sort(sortFn);
   renderProducts(global_products);
+};
+
+const addToCart = (product_id) => {
+  const productFound = global_products.find((prod) => prod.id === product_id);
+  cart.push(productFound);
+  renderProducts(global_products);
+};
+
+const removeFromCart = (product_id) => {
+  cart = cart.filter((prod) => prod.id !== product_id);
+  renderProducts(global_products);
+};
+
+const renderSearchProducts = () => {
+  htmlDivSearch.classList.remove("search--active");
+  active_state = false;
+  htmlSearchList.innerHTML = ``;
+  renderProducts(search_products);
 };

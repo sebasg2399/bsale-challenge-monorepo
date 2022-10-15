@@ -7,8 +7,6 @@ export const findProduct = async (req, res) => {
   
   const limit = req.query.limit ?  parseInt(req.query.limit) + 1 : 80;
   
-  console.log(limit);
-  console.log(query);
   if (!query) {
     return res.status(400).send({ message: "You must give a valid query" });
   } else {
