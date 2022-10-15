@@ -28,4 +28,7 @@ estos se almacenaran en cache para reducir tiempos de espera.
 ## Carrito
 En el carrito podra ver sus items agregados asi como la opcion de pagar, de momento el pagar solo vaciara el carrito y lo llevara a la pagina principal.
 
+## Ordenar por
+Este select ordenara segun el criterio elegido, nombre sera de manera alfabetica, precio de menor a mayor y descuento de mayor a menor.
+
 # Muchas gracias :D
