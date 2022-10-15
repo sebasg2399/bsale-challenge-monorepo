@@ -1,3 +1,5 @@
+
+
 # COMO FUNCIONA LA API
 
 # Primeros pasos
@@ -15,6 +17,18 @@ Luego copiamos los esquemas que tiene esta base de datos y los aplicamos a nuest
 Esto nos permite hacer consultas de una manera muy sencilla, como por ejemplo: `Product.findAll()` seria una consulta que devuelve todos los productos registrados.
 
 # API
+Puede encontrar un ejemplo de la api montada en un servidor mediante el siguiente link:
+
+[Este es un link para acceder a la api](https://bsalestorechallengesebas.herokuapp.com/)
+
+`https://bsalestorechallengesebas.herokuapp.com/`
+
+aqui usted podra acceder a las peticiones expuestas en la parte de abajo, como por ejemplo 
+
+[Este es un link para ver los productos en la api](https://bsalestorechallengesebas.herokuapp.com/products)
+
+`https://bsalestorechallengesebas.herokuapp.com/products`
+
 
 ## `GET: /products/`
 retorna todos los productos que se encuentren en la base de datos
