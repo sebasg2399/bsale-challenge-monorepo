@@ -4,7 +4,10 @@ import { Product } from "../models/product.js";
 
 export const findProduct = async (req, res) => {
   const query = req.query.q;
-
+  
+  const limit = req.query.limit ?  parseInt(req.query.limit) + 1 : 80;
+  
+  console.log(limit);
   console.log(query);
   if (!query) {
     return res.status(400).send({ message: "You must give a valid query" });
@@ -16,9 +19,14 @@ export const findProduct = async (req, res) => {
           attributes: ["name"],
         },
       });
-      const query_products = products.filter((product) =>
-        product.name.toLowerCase().includes(query)
-      );
+      let count = 0;
+      const query_products = products.filter((product) => {
+        if (product.name.toLowerCase().includes(query) && count < limit) {
+          count++;
+          return product;
+        }
+      });
+      console.log(query_products);
       if (query_products.length < 1) {
         return res.send({ message: "No products found", products: [] });
       }

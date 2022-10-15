@@ -33,9 +33,13 @@ const ProductCard = (product) => {
   `;
 };
 
+let global_products = [];
+let order_products = [];
 const renderProducts = (products) => {
-  htmlProducts.innerHTML = "";
   product_quantity.innerText = products.length;
+  htmlProducts.innerHTML = "";
+  global_products = products;
+  order_products = products;
   products.forEach((product) => {
     const card = document.createElement("div");
     card.classList.add("product-card");
@@ -43,23 +47,21 @@ const renderProducts = (products) => {
     htmlProducts.appendChild(card);
   });
 };
-
 // function to fetch all products and calling it when page starts
 const getAllProducts = () => {
-  console.log(cache);
+  htmlProducts.innerHTML = "Cargando productos....";
   const endpoint = `products/`;
   cache[endpoint]
     ? renderProducts(cache[endpoint])
     : fetch(url + endpoint).then(async (res) => {
         const { products } = await res.json();
-        cache[endpoint] = products
+        cache[endpoint] = products;
         renderProducts(products);
       });
 };
 
 const getCategories = () => {
   fetch(url + "categories").then(async (res) => {
-    htmlProducts.innerHTML = "";
     const { categories } = await res.json();
     categories.forEach((cat) => {
       const category_item = document.createElement("button");
@@ -74,7 +76,12 @@ const getCategories = () => {
 };
 getCategories();
 getAllProducts();
+
+const htmlOrder = document.getElementById("order");
+
 const getProductsOf = (category_id) => {
+  htmlProducts.innerHTML = "Cargando productos....";
+  htmlOrder.value = "id";
   const endpoint = `categories/${category_id}`;
   cache[endpoint]
     ? renderProducts(cache[endpoint])
@@ -87,4 +94,79 @@ const getProductsOf = (category_id) => {
           getAllProducts();
         }
       });
+};
+
+// let search_products = []
+
+const htmlInputSearch = document.getElementById("search_input");
+const htmlSearchList = document.getElementById("search_list");
+const htmlDivSearch = document.getElementById("search");
+const renderSearch = (products) => {
+  htmlSearchList.innerHTML = "";
+  products.forEach((product) => {
+    const item = document.createElement("li");
+    item.classList.add("search__item");
+    item.innerHTML = product.name;
+    htmlSearchList.appendChild(item);
+  });
+};
+
+let active_state = false;
+
+const handleSearch = (e) => {
+  const query = e.currentTarget.value;
+  const endpoint = `products/find?q=${query}&limit=3`;
+  if (query === "") {
+    htmlDivSearch.classList.remove("search--active");
+    active_state = false;
+    htmlSearchList.innerHTML = ``;
+    return;
+  }
+  if (active_state == false) {
+    console.log(active_state);
+    htmlDivSearch.classList.toggle("search--active");
+    active_state = true;
+  }
+  if (query.length > 3) {
+    fetch(url + endpoint).then(async (res) => {
+      try {
+        const { products, message } = await res.json();
+        if (products.length > 0) {
+          renderSearch(products);
+        } else {
+          htmlSearchList.innerHTML = `<li class="search__item">No se encontraron productos</li>`;
+        }
+      } catch {
+        htmlSearchList.innerHTML = `<li class="search__item">No se encontraron productos</li>`;
+      }
+    });
+  } else {
+    htmlSearchList.innerHTML = `<li class="search__item">Introduzca como minimo 3 caracteres</li>`;
+  }
+};
+htmlInputSearch.addEventListener("keyup", handleSearch);
+
+htmlOrder.addEventListener("change", (e) => {
+  console.log(e.target.value);
+  OrderProducts(e.target.value);
+});
+
+const compareStrings = (a, b) => {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  if (a == b) return 0;
+};
+
+const OrderProducts = (by) => {
+  const sortFn = (a, b) => {
+    if (by === "name") {
+      return compareStrings(a[by].toLowerCase(), b[by].toLowerCase());
+    } else if (by === "discount") {
+      return b[by] - a[by];
+    } else {
+      return a[by] - b[by];
+    }
+  };
+  global_products.sort(sortFn);
+  renderProducts(global_products);
 };
