@@ -4,6 +4,7 @@
 
 # Primeros pasos
 Ejecutar el comando `npm i` para instalar todas las dependencias.
+
 Ejecutar el comando `node src/index.js` para correr el servidor en local.
 
 ## express
