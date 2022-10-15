@@ -1,7 +1,7 @@
 const htmlProducts = document.getElementById("products");
 const htmlCategories = document.getElementById("categories");
 
-const url = new URL("http://localhost:5000");
+const url = new URL("https://bsalestorechallengesebas.herokuapp.com/");
 let cache = {};
 
 let product_quantity = document.getElementById("product_quantity");
