@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/cart.css" />
+  </head>
+  <body class="app_layout">
+    <nav class="nav">
+      <!-- <div class="nav-start"><div class="nav-cart">cart</div></div> -->
+      <a href="./" class="nav-brand">
+        <h1>Bsale test ☺</h1>
+      </a>
+    </nav>
+    <main class="main_layout">
+      <div class="container">
+        <div class="cart-container">
+          <div class="cart">
+            <h4>Carrito de compra</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Products</th>
+                  <th>Precio</th>
+                </tr>
+              </thead>
+              <tbody id="cart-list"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="cart-checkout-container">
+          <div class="checkout-start">
+            <h4>Tu compra</h4>
+            <div class="checkout__item">
+              <p>Subtotal</p>
+              <p id="subtotal"></p>
+            </div>
+            <div class="checkout__item">
+              <p>Descuento</p>
+              <p id="descuento"></p>
+            </div>
+          </div>
+          <div class="checkout-end">
+            <div class="checkout__item">
+              <p>Total</p>
+              <p id="total"></p>
+            </div>
+            <div class="checkout__pay">
+              <button id="paybtn" class="checkout__button">Ir a pagar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./scripts/cart.js"></script>
+  </body>
+</html>

@@ -40,7 +40,7 @@ const ProductCard = (product) => {
   `;
 };
 
-let cart = [];
+let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 let global_products = [];
 let order_products = [];
 
@@ -197,11 +197,14 @@ const OrderProducts = (by) => {
 const addToCart = (product_id) => {
   const productFound = global_products.find((prod) => prod.id === product_id);
   cart.push(productFound);
+  
+  sessionStorage.setItem("cart", JSON.stringify(cart));
   renderProducts(global_products);
 };
 
 const removeFromCart = (product_id) => {
   cart = cart.filter((prod) => prod.id !== product_id);
+  sessionStorage.setItem("cart", JSON.stringify(cart));
   renderProducts(global_products);
 };
 

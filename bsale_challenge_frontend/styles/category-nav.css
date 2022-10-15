@@ -3,6 +3,8 @@
   padding: 0 5rem;
   width: 100%;
   gap: 0.5rem;
+  /* height: 100px; */
+  /* overflow: hidden; */
 }
 .category-nav__item {
   border: none;
