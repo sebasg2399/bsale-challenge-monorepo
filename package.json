@@ -1,0 +1,7 @@
+{
+  "private": false,
+  "name": "bsale-challenge-monorepo",
+  "workspaces": [
+    "bsale_challenge_api/*"
+  ]
+}
