@@ -5,17 +5,6 @@ import { Product } from "./models/product.js";
 const main = async () => {
   try {
     await sequelize.authenticate();
-    const schemas = await sequelize.showAllSchemas();
-    console.log(schemas);
-    const products = await Product.findAll({
-      where:{
-        category: 2
-      }
-    });
-    const categories = await Category.findAll({
-      where: {},
-    });
-    console.log(products);
     // await sequelize.sync({
     //   alter: false
     // });

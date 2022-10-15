@@ -1,0 +1,25 @@
+.products-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+.grid-products {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+.product-card{
+  border: 1px solid  #ECEDED;
+  display: flex;
+  flex-flow: column;
+  max-width: 200px;
+  height: 300px;
+  padding: 2rem;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+}
+.product-card__image{
+  object-fit: cover;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bsale store</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body class="app_layout">
+    <nav class="nav">
+      <!-- <div class="nav-start"><div class="nav-cart">cart</div></div> -->
+      <a href="./" class="nav-brand">
+        <h1>Bsale test ♥</h1>
+      </a>
+      <div class="nav-end">
+        <div class="nav-search">
+          <div class="search">
+            <input placeholder="Introduce tu busqueda" type="text" class="search__input" />
+            <button class="search__button">Search</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="main_layout">
+      <div class="category-nav">
+        
+            <button class="category-nav__item">All</button>
+            <button class="category-nav__item">Other</button>
+            <button class="category-nav__item">Other</button>
+      </div>
+      <div class="products-section">
+        <p>Tenemos 0 productos</p>
+        <div id="products" class="grid-products"></div>
+      </div>
+    </main>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

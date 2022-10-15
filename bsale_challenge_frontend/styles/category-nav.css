@@ -1,0 +1,13 @@
+.category-nav{
+  display:flex;
+  padding: 0 5rem;
+  width: 100%;
+  gap: 0.5rem;
+}
+.category-nav__item{
+  border: none;
+  background: #FEA244;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0 0 1rem 1rem;
+}
