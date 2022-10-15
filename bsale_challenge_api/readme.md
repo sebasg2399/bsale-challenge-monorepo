@@ -18,8 +18,6 @@ Esto nos permite hacer consultas de una manera muy sencilla, como por ejemplo: `
 
 ## `GET: /products/`
 retorna todos los productos que se encuentren en la base de datos
-`id: number`
-
 
 ## `GET: /products/find?q=query&limit=3`
 busca y retorna los productos que cumplan con la condicion del query, los criterios de busqueda son nombre del producto y categoria del producto, asi como se puede definir un limite con `limit` para la cantidad de productos que se devolvera
