@@ -1,4 +1,4 @@
-const url = new URL("http://localhost:5000");
+const url = new URL("https://bsalestorechallengesebas.herokuapp.com/");
 let cache = {};
 
 let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
