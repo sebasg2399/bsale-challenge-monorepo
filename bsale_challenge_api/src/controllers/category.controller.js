@@ -17,15 +17,31 @@ export const getProducts = async (req, res) => {
             category: category.id,
           },
         });
-        return res
-          .status(200)
-          .send({
-            message: `Products with category ${category.name} successfully`,
-            products,
-          });
+        return res.status(200).send({
+          message: `Products with category ${category.name} successfully`,
+          products,
+        });
       }
     } catch (e) {
       return res.status(400).send({ message: e.message });
     }
+  }
+};
+
+export const getCategories = async (req, res) => {
+  try {
+    const categories = await Category.findAll({});
+    if (categories.length === 0) {
+      return res
+        .status(400)
+        .send({ message: "No categories found", categories: [] });
+    } else {
+      return res.status(200).send({
+        message: `Categories fetched succesfully`,
+        categories,
+      });
+    }
+  } catch (e) {
+    return res.status(400).send({ message: e.message });
   }
 };

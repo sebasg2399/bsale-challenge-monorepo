@@ -16,21 +16,24 @@
       <div class="nav-end">
         <div class="nav-search">
           <div class="search">
-            <input placeholder="Introduce tu busqueda" type="text" class="search__input" />
+            <input
+              placeholder="Introduce tu busqueda"
+              type="text"
+              class="search__input"
+            />
             <button class="search__button">Search</button>
           </div>
         </div>
       </div>
     </nav>
     <main class="main_layout">
-      <div class="category-nav">
-        
-            <button class="category-nav__item">All</button>
-            <button class="category-nav__item">Other</button>
-            <button class="category-nav__item">Other</button>
+      <div id="categories" class="category-nav">
+        <button onclick="getAllProducts()" class="category-nav__item">
+          All
+        </button>
       </div>
       <div class="products-section">
-        <p>Tenemos 0 productos</p>
+        <p>Tenemos <span id="product_quantity"></span> productos:</p>
         <div id="products" class="grid-products"></div>
       </div>
     </main>
