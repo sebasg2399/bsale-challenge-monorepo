@@ -1,7 +1,10 @@
 import { app } from "./app.js";
 import { sequelize } from "./database.js";
-import { Category } from "./models/category.js";
-import { Product } from "./models/product.js";
+
+// Declaramos una funcion asincrona main, 
+// que utilizara {sequelize} y nos autenticara,
+// de fallar devolvera un error, si continua entonces empezara a escuchar
+// nuestras peticiones en el puerto 5000 (desarrolo) 
 const main = async () => {
   try {
     await sequelize.authenticate();

@@ -16,17 +16,21 @@
       <div class="nav-end">
         <div class="nav-search">
           <div class="search-container">
-            <div id="search" class="search">
-              <input
-                id="search_input"
-                placeholder="Introduce tu busqueda"
-                type="text"
-                class="search__input"
-              />
-              <button onclick="renderSearchProducts()" class="search__button">
-                Search
-              </button>
-            </div>
+              <form id="search_form" action="#" class="search">
+                <input
+                  name="q"
+                  id="search_input"
+                  placeholder="Introduce tu busqueda"
+                  type="text"
+                  class="search__input"
+                />
+                <button
+                  type="submit"
+                  class="search__button"
+                >
+                  Search
+                </button>
+              </form>
             <ul id="search_list" class="search__list"></ul>
           </div>
         </div>
@@ -48,9 +52,9 @@
     </nav>
     <main class="main_layout">
       <div id="categories" class="category-nav">
-        <button onclick="getAllProducts()" class="category-nav__item">
+        <div onclick="getAllProducts()" class="category-nav__item">
           All
-        </button>
+        </div>
       </div>
       <div class="products-section">
         <div class="products-control">
