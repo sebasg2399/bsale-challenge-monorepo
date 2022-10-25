@@ -4,6 +4,11 @@ podra encontrar la pagina deployada en netlify en el siguiente enlace:
 
 https://glistening-kulfi-7ee2af.netlify.app/
 
+# Estructura del proyecto
+Este proyecto sera inicializado en el archivo index.html
+en la carpeta principal se encontraran las paginas html,
+en la carpeta scripts se encontraran los archivos de javascript,
+en la carpeta styles se encontraran los archivos de css
 
 # La pagina bsale test
 Esta pagina es una tienda, nos permite buscar, ordenar y listar por categoria una diversidad de productos que tenemos en nuestra base de datos,
