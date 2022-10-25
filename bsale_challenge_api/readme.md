@@ -32,13 +32,71 @@ aqui usted podra acceder a las peticiones expuestas en la parte de abajo, como p
 
 
 ## `GET: /products/`
-retorna todos los productos que se encuentren en la base de datos
+
+* **Success Response:**
+  
+  * **Code:** 200 <br />
+    **Content:** `{ message : "Your query result", products: [...] }`
+ 
+* **Error Response:**
+
+  * **Code:** 400 Bad request <br />
+    **Content:** `{ message : "error message" }`
 
 ## `GET: /products/find?q=query&limit=3`
 busca y retorna los productos que cumplan con la condicion del query, los criterios de busqueda son nombre del producto y categoria del producto, asi como se puede definir un limite con `limit` para la cantidad de productos que se devolvera
 
+*  **URL Params**
+
+   **Required:**
+ 
+   `q=[string]`
+
+   **Optional:**
+ 
+   `limit=[number]`
+
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ message : "Your query result", products: [...] }`
+
+* **Error Response:**
+
+  * **Code:** 400 Bad request <br />
+    **Content:** `{ message : "error message" }`
+ 
 ## `GET: /categories/:category_id`
 Retorna todos los productos contenidos en esa categoria pasada como param route.
 
+*  **URL Params**
+
+   **Required:**
+ 
+   `:category_id=[number]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ message : "Products with category ${category.name} fetched successfully", products: [...] }`
+
+* **Error Response:**
+
+  * **Code:** 400 Bad request <br />
+    **Content:** `{ message : "error message" }`
+
+
 ## `GET: /categories/`
 Retorna las categorias existentes en la base de datos.
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ message : "Categories fetched succesfully", categories: [...] }`
+
+* **Error Response:**
+
+  * **Code:** 404 Not Found <br />
+    **Content:** `{ message : "No categories found" }`
+
